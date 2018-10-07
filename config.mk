@@ -24,6 +24,7 @@ PRODUCT_PACKAGES += \
     EvoXPapers \
     NexusWallpapersStubPrebuilt2018 \
     SubstratumSignature \
+    Lawnchair \
     WeatherClient
 
 ifeq ($(TARGET_GAPPS_ARCH),arm64)
@@ -97,6 +98,11 @@ endif
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/pixelstyle/overlay
 DEVICE_PACKAGE_OVERLAYS += \
     vendor/pixelstyle/overlay/common/
+
+# Lawnchair
+PRODUCT_COPY_FILES += \
+    vendor/pixelstyle/etc/permissions/privapp-permissions-lawnchair.xml:system/etc/permissions/privapp-permissions-lawnchair.xml \
+    vendor/pixelstyle/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:system/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
 
 # Weather
 PRODUCT_COPY_FILES += \
