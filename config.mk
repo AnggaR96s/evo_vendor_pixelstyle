@@ -22,7 +22,12 @@ PRODUCT_PACKAGES += \
     EvoXFonts \
     EvoXPapers \
     SubstratumSignature \
-    WeatherClient
+    WeatherClient \
+    GContacts \
+    GCalculator \
+    GDeskClock \
+    GDialer \
+    GMessaging
 
 # Lawnchair
 ifeq ($(LAWNCHAIR_OPTOUT),)
@@ -34,7 +39,8 @@ TARGET_MINIMAL_APPS ?= false
 
 # build.prop entrys
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.wallpapers_loc_request_suw=true
+    ro.wallpapers_loc_request_suw=true \
+    ro.opa.eligible_device=true
 
 # Bootanimation
 ifeq ($(TARGET_BOOT_ANIMATION_RES),720)
@@ -63,6 +69,10 @@ else
      $(warning "PixelStyle: TARGET_BOOT_ANIMATION_RES is undefined, assuming 1080p")
      PRODUCT_COPY_FILES += vendor/pixelstyle/media/bootanimation_1080.zip:system/media/bootanimation.zip
 endif
+
+# Fix Dialer
+PRODUCT_COPY_FILES +=  \
+    vendor/pixelstyle/overlay/common/sysconfig/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
 
 # Fonts
 PRODUCT_COPY_FILES += \
