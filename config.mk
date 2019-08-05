@@ -17,19 +17,12 @@
 PRODUCT_PACKAGES += \
     SoundPickerPrebuilt \
     WallpaperPickerGooglePrebuilt \
-    NexusLauncherPrebuilt \
     WellbeingPrebuilt \
     MarkupGoogle \
     EvoXFonts \
     EvoXPapers \
-    NexusWallpapersStubPrebuilt2018 \
     SubstratumSignature \
     WeatherClient
-
-ifeq ($(TARGET_GAPPS_ARCH),arm64)
-PRODUCT_PACKAGES += \
-    MatchmakerPrebuilt
-endif
 
 # Lawnchair
 ifeq ($(LAWNCHAIR_OPTOUT),)
@@ -86,18 +79,9 @@ ADDITIONAL_FONTS_FILE := vendor/pixelstyle/fonts/google-sans.xml
 PRODUCT_COPY_FILES += \
     vendor/pixelstyle/etc/sysconfig/pixel.xml:system/etc/sysconfig/pixel.xml
 
-# Set Pixel blue light theme on Gboard
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.com.google.ime.theme_id=5
-
 # Markup libs
 PRODUCT_COPY_FILES += \
-    vendor/pixelstyle/lib/libsketchology_native.so:system/lib/libsketchology_native.so
-
-ifeq ($(TARGET_GAPPS_ARCH),arm64)
-PRODUCT_COPY_FILES += \
     vendor/pixelstyle/lib64/libsketchology_native.so:system/lib64/libsketchology_native.so
-endif
 
 # Include package overlays
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/pixelstyle/overlay
